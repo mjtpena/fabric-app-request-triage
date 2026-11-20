@@ -1,0 +1,170 @@
+@import 'tailwindcss';
+@import '@x10/shared/styles.css';
+@source "../../../shared/src";
+
+/* ------------------------------------------------------------------ the radar scope */
+
+.rt-scope,
+.rt-mini {
+  --rt-disc-1: color-mix(in oklab, var(--accent-4) 85%, var(--world-sky));
+  --rt-disc-2: color-mix(in oklab, var(--accent-3) 80%, var(--world-sky));
+  --rt-disc-3: color-mix(in oklab, var(--accent-6) 70%, var(--world-sky));
+  --rt-rim: var(--world-structure);
+  --rt-band: color-mix(in oklab, var(--gray-9) 7%, transparent);
+  --rt-line: color-mix(in oklab, var(--accent-9) 22%, transparent);
+  --rt-line-strong: color-mix(in oklab, var(--accent-10) 45%, transparent);
+  --rt-sweep: var(--accent-9);
+  --rt-ink: var(--world-ink);
+  --rt-ink-muted: color-mix(in oklab, var(--world-ink-muted) 85%, var(--accent-11));
+  --rt-blip-edge: color-mix(in oklab, var(--world-ink) 22%, transparent);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) :is(.rt-scope, .rt-mini) {
+    --rt-disc-1: color-mix(in oklab, var(--accent-4) 70%, #071312);
+    --rt-disc-2: color-mix(in oklab, var(--accent-2) 75%, #050c0c);
+    --rt-disc-3: color-mix(in oklab, var(--accent-4) 80%, #071312);
+    --rt-rim: color-mix(in oklab, var(--gray-3) 80%, transparent);
+    --rt-band: color-mix(in oklab, var(--gray-12) 5%, transparent);
+    --rt-line: color-mix(in oklab, var(--accent-9) 24%, transparent);
+    --rt-line-strong: color-mix(in oklab, var(--accent-9) 50%, transparent);
+    --rt-sweep: var(--accent-10);
+    --rt-blip-edge: color-mix(in oklab, #000 40%, transparent);
+  }
+}
+:root[data-theme='dark'] :is(.rt-scope, .rt-mini) {
+  --rt-disc-1: color-mix(in oklab, var(--accent-4) 70%, #071312);
+  --rt-disc-2: color-mix(in oklab, var(--accent-2) 75%, #050c0c);
+  --rt-disc-3: color-mix(in oklab, var(--accent-4) 80%, #071312);
+  --rt-rim: color-mix(in oklab, var(--gray-3) 80%, transparent);
+  --rt-band: color-mix(in oklab, var(--gray-12) 5%, transparent);
+  --rt-line: color-mix(in oklab, var(--accent-9) 24%, transparent);
+  --rt-line-strong: color-mix(in oklab, var(--accent-9) 50%, transparent);
+  --rt-sweep: var(--accent-10);
+  --rt-blip-edge: color-mix(in oklab, #000 40%, transparent);
+}
+
+.rt-ring-label {
+  font: 500 9px/1 var(--mono);
+  fill: var(--rt-ink-muted);
+  paint-order: stroke;
+  stroke: var(--rt-disc-2);
+  stroke-width: 3px;
+  stroke-linejoin: round;
+}
+.rt-sector-label {
+  font: 600 11px/1 var(--mono);
+  letter-spacing: 0.08em;
+  fill: var(--rt-ink-muted);
+}
+.rt-sector-label {
+  paint-order: stroke;
+  stroke: var(--rt-disc-3);
+  stroke-width: 4px;
+  stroke-linejoin: round;
+}
+.is-compact .rt-sector-label {
+  font-size: 17px;
+}
+.is-compact .rt-ring-label {
+  font-size: 13px;
+}
+.is-compact .rt-rank {
+  font-size: 14px;
+}
+.is-compact .rt-rank.is-focus {
+  font-size: 16px;
+}
+.rt-sector-count {
+  font-weight: 500;
+  fill: var(--accent-11);
+}
+.rt-rank {
+  font: 600 9px/1 var(--mono);
+  fill: var(--rt-ink-muted);
+  paint-order: stroke;
+  stroke: var(--rt-disc-2);
+  stroke-width: 2.5px;
+  stroke-linejoin: round;
+  pointer-events: none;
+}
+.rt-rank.is-focus {
+  fill: var(--rt-ink);
+  font-size: 11px;
+}
+.rt-you {
+  font: 700 8px/1 var(--mono);
+  letter-spacing: 0.12em;
+  fill: var(--rt-ink);
+  paint-order: stroke;
+  stroke: var(--rt-disc-2);
+  stroke-width: 2.5px;
+  pointer-events: none;
+}
+.rt-blip {
+  cursor: pointer;
+  outline: none;
+  transition: opacity 200ms var(--ease);
+}
+.rt-blip:focus-visible .rt-core {
+  stroke: var(--focus, var(--accent-9));
+  stroke-width: 3px;
+}
+.rt-blink {
+  animation: rt-blink 1.2s steps(1, end) infinite;
+}
+@keyframes rt-blink {
+  0%,
+  55% {
+    opacity: 1;
+  }
+  56%,
+  100% {
+    opacity: 0.12;
+  }
+}
+
+.rt-skeleton-sweep {
+  background: conic-gradient(from 0deg, transparent 0 300deg, color-mix(in oklab, var(--accent-9) 22%, transparent) 360deg);
+  animation: rt-spin 3s linear infinite;
+}
+@keyframes rt-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Mini radar on the flight plan: blips glide to their new range as the title changes. */
+.rt-mini-num {
+  font: 700 9px/1 var(--mono);
+  fill: var(--rt-ink);
+  paint-order: stroke;
+  stroke: var(--rt-disc-2);
+  stroke-width: 2.5px;
+}
+.rt-mini-you {
+  font: 600 6.5px/1 var(--mono);
+  letter-spacing: 0.12em;
+  fill: var(--rt-ink-muted);
+  paint-order: stroke;
+  stroke: var(--rt-disc-1);
+  stroke-width: 2px;
+}
+.rt-mini-blip {
+  transition: transform 420ms var(--ease), opacity 200ms var(--ease);
+}
+
+/* Black box: the recorder tape. */
+.rt-tape {
+  background-image: repeating-linear-gradient(90deg, var(--line) 0 1px, transparent 1px 24px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rt-blink,
+  .rt-skeleton-sweep {
+    animation: none;
+  }
+  .rt-mini-blip {
+    transition: none;
+  }
+}
