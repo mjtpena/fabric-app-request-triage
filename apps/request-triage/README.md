@@ -3,7 +3,7 @@
 A public, ranked queue for "can you get me this data" requests. Stakeholders submit asks and back each other's, the
 data team sizes, plans and moves them on a board, and everyone can see what is coming next and why something was
 declined. Each request gets a priority score from its value, urgency, supporters and effort, so the ranking is open to
-anyone who wants to check it. Built as a Microsoft Fabric App (Rayfin 2.0, preview).
+anyone who wants to check it. Built as a Microsoft Fabric App (Rayfin 2.0).
 
 ![The request radar](docs/screenshot.png)
 
@@ -28,7 +28,7 @@ Demo video (about 2 minutes, AI-generated narration, captions burned in): [demo/
 
 ## Prerequisites
 
-- A Fabric tenant with the **Fabric Apps** workload enabled (preview), and a workspace on a Fabric capacity.
+- A Fabric tenant with the **Fabric Apps** workload enabled, and a workspace on a Fabric capacity.
 - **Edit** permission (Contributor or higher) on that workspace to deploy.
 - Node.js 20 or later.
 - Users need access to the app item. Workspace members get it by default; anyone else must be given access to the item.

@@ -127,7 +127,7 @@ export const script: DemoScript = {
     },
     {
       id: 'takeaway',
-      say: ['Requests, reasons and progress in one place, running on Fabric Apps in preview with a Fabric SQL database.'],
+      say: ['Requests, reasons and progress in one place, running on Fabric Apps with a Fabric SQL database.'],
       async run(h) {
         await h.goto('/');
         await h.pause(4000);

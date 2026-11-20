@@ -30,7 +30,7 @@ export function AboutPage() {
             public radar. Stakeholders file requests and back each other's asks; the data team sizes, plans and moves them;
             everyone can see what is coming next and why something was declined.
           </p>
-          <p className="mb-0 text-ui text-muted">Built by Datachain Consulting for AI @Work. Runs on Microsoft Fabric Apps (preview).</p>
+          <p className="mb-0 text-ui text-muted">Built by Datachain Consulting for AI @Work. Runs on Microsoft Fabric Apps.</p>
         </div>
       </div>
 
